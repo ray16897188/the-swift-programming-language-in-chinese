@@ -2,17 +2,17 @@
 -----------------
 
 > 2.0
-> 翻译+校对：[lyojo](https://github.com/lyojo)
+> 翻译+校对：[lyojo](https://github.com/lyojo) [ray16897188](https://github.com/ray16897188)
 
-错误处理是响应错误以及从错误中返回的过程。swift提供第一类错误支持，包括在运行时抛出，捕获，传送和控制可回收错误。
+错误处理是响应错误以及从错误中恢复的过程。swift提供了在运行对可恢复错误抛出，捕获，传送和操作的高级支持。
 
-一些函数和方法不能总保证能够执行所有代码或产生有用的输出。可空类型用来表示值可能为空，但是当函数执行失败的时候，可空通常可以用来确定执行失败的原因，因此代码可以正确地响应失败。在Swift中，这叫做抛出函数或者抛出方法。
+某些操作并不能总是保证执行所有代码都可以执行或总会产出有用的结果。可选类型用来表示值可能为空，但是当执行失败的时候，通常要去了解此次失败是由何引起，你的代码就可以做出与之相应的反应。
 
-举个例子，考虑到一个从磁盘上的一个文件读取以及处理数据的任务，有几种情况可能会导致这个任务失败，包括指定路径的文件不存在，文件不具有可读属性，或者文件没有被编码成合适的格式。区分这些错误可以让程序解决并且修复这些错误，并且，如果可能的话，把这些错误报告给用户。
+举个例子，假如有个从磁盘上的某个文件读取以并做数据处理的任务，该任务会有多种可能失败的情形，包括指定路径下文件并不存在，文件不具有可读权限，或者文件编码格式不兼容。区分这些错误情形可以让程序解决并处理一部分错误，然后把它解决不了的错误报告给用户。
 
 >
 注意：
-Swift中的错误处理涉及到错误处理样式，这会用到Cocoa中的NSError和Objective-C。更多信息请参见：[Using Swift with Cocoa and Objective-C](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216)中的[错误处理](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/AdoptingCocoaDesignPatterns.html#//apple_ref/doc/uid/TP40014216-CH7-ID10)。
+Swift中的错误处理涉及到错误处理模式，这会用到Cocoa和Objective-C中的`NSError`。关于这个class的更多信息请参见：[ Using Swift with Cocoa and Objective-C (Swift 2)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html#//apple_ref/doc/uid/TP40014216)中的[错误处理](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/AdoptingCocoaDesignPatterns.html#//apple_ref/doc/uid/TP40014216-CH7-ID10)。
 
 ###错误的表示：
 在Swift中，错误用符合`ErrorType`协议的值表示。
